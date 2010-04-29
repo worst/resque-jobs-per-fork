@@ -1,22 +1,29 @@
-= resque-multi-job-forks
+= resque-jobs-per-fork
 
 If you have very frequent and fast resque jobs, the overhead of forking and running your after_fork hook, might get too big. Using this resque plugin, you can have your workers perform more than one job, before terminating.
 
-You simply specify the number of minutes you want each fork to run using the MINUTES_PER_FORK environment variable:
+You simply specify the number of jobs you want each fork to run using the JOBS_PER_FORK environment variable:
 
-  QUEUE=* MINUTES_PER_FORK=5 rake resque:work
+  QUEUE=* JOBS_PER_FORK=5 rake resque:work
 
-This will have each fork process jobs for 5 minutes, before terminating.
+You *have* to specify JOBS_PER_FORK environment variable or else your jobs won't run with this gem
 
-This plugin also defines a new hook, that gets called right before the fork terminates:
+This will have each fork 5 jobs, before terminating.
 
-  Resque.before_child_exit do |worker|
-    worker.log("#{worker.jobs_processed} were processed in this fork")
+This plugin also defines 2 new hooks that get called after the fork starts and before the fork terminates
+
+  Resque.before_perform_jobs_per_fork do |worker|
+    worker.log("Your message here")
   end
   
+  Resque.after_perform_jobs_per_fork do |worker|
+    worker.log("Your message here")
+  end
+  
+Version 0.3.0 works on Resque 1.8.x 
 
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
@@ -27,4 +34,4 @@ This plugin also defines a new hook, that gets called right before the fork term
 
 == Copyright
 
-Copyright (c) 2010 Mick Staugaard. See LICENSE for details.
+Copyright (c) 2010 Sam Granieri (Inspired by Mick Staugaard). See LICENSE for details.
