@@ -20,7 +20,7 @@ This plugin also defines 2 new hooks that get called after the fork starts and b
     worker.log("Your message here")
   end
   
-Version 0.3.0 works on Resque 1.8.x 
+Version 0.3.x works on Resque 1.8.x 
 
 == Note on Patches/Pull Requests
 
