@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name        = "resque-jobs-per-fork"
-    gem.version     = "0.3.0"
+    gem.version     = "0.3.1"
     gem.summary     = %Q{Have your resque workers process more that one job}
     gem.description = %Q{When your resque jobs are frequent and fast,
       the overhead of forking and running your after_fork might get too big.}
