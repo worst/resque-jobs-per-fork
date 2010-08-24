@@ -39,6 +39,7 @@ module Resque
       run_hook :before_perform_jobs_per_fork, self
       jobs_performed ||= 0
       while jobs_performed < ENV['JOBS_PER_FORK'].to_i do
+        break if @shutdown
         if jobs_performed == 0
           perform_without_jobs_per_fork(job)
         elsif another_job = reserve
