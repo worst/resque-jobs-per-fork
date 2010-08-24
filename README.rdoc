@@ -19,7 +19,8 @@ This plugin also defines 2 new hooks that get called after the fork starts and b
   Resque.after_perform_jobs_per_fork do |worker|
     worker.log("Your message here")
   end
-  
+
+Version 0.4.x works on Resque 1.10.x 
 Version 0.3.x works on Resque 1.8.x 
 
 == Note on Patches/Pull Requests
