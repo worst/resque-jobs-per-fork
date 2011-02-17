@@ -12,7 +12,7 @@ begin
     gem.email       = "sam@samgranieri.com"
     gem.homepage    = "http://github.com/samgranieri/resque-jobs-per-fork"
     gem.authors     = ["Sam Granieri, Mick Staugaard"]
-    gem.add_dependency "resque", "~> 1.10.0"
+    gem.add_dependency "resque", "~> 1.10"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
