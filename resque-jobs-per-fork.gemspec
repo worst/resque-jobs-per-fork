@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.homepage      = "http://github.com/samgranieri/resque-jobs-per-fork"
   s.summary       = "Have your resque workers process more that one job"
   s.description   = "When your resque jobs are frequent and fast, the overhead of forking and running your after_fork might get too big."
-  s.require_paths = "lib"
+  s.require_path  = "lib"
   s.authors       = ["Sam Granieri", "Mick Staugaard"]
   s.email         = ["sam@samgranieri.com"]
   s.version       = "0.4.0"
