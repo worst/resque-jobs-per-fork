@@ -1,6 +1,7 @@
 = resque-jobs-per-fork
 
 If you have very frequent and fast resque jobs, the overhead of forking and running your after_fork hook, might get too big. Using this resque plugin, you can have your workers perform more than one job, before terminating.
+The original use case for this project was keeping connections while fetching data from a very fragile and crappy webservice.
 
 You simply specify the number of jobs you want each fork to run using the JOBS_PER_FORK environment variable:
 
@@ -15,11 +16,12 @@ This plugin also defines 2 new hooks that get called after the fork starts and b
   Resque.before_perform_jobs_per_fork do |worker|
     worker.log("Your message here")
   end
-  
+
   Resque.after_perform_jobs_per_fork do |worker|
     worker.log("Your message here")
   end
 
+Version 1.15.x works on Resque 1.15.x
 Version 0.5.x works on Resque 1.11.x
 Version 0.4.x works on Resque 1.10.x 
 Version 0.3.x works on Resque 1.8.x 

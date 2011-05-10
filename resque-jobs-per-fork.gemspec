@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.require_path  = "lib"
   s.authors       = ["Sam Granieri", "Mick Staugaard"]
   s.email         = ["sam@samgranieri.com"]
-  s.version       = "0.5.0"
+  s.version       = "1.15.0"
   s.platform      = Gem::Platform::RUBY
   s.files         = Dir.glob("{lib,test}/**/*") + %w(LICENSE README.rdoc Rakefile)
 
-  s.add_dependency("resque", "~> 1.10")
+  s.add_dependency("resque", "~> 1.15")
 end
 

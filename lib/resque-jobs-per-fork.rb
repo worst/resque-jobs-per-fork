@@ -3,7 +3,7 @@ require 'resque/worker'
 
 
 module Resque
-  
+
   # the `before_perform_jobs_per_fork` hook will run in the child perform
   # right before the child perform starts
   #
@@ -17,7 +17,7 @@ module Resque
   def self.before_perform_jobs_per_fork=(before_perform_jobs_per_fork)
     @before_perform_jobs_per_fork = before_perform_jobs_per_fork
   end
-  
+
   # the `after_perform_jobs_per_fork` hook will run in the child perform
   # right before the child perform terminates
   #
@@ -26,14 +26,14 @@ module Resque
   def self.after_perform_jobs_per_fork(&block)
     block ? (@after_perform_jobs_per_fork = block) : @after_perform_jobs_per_fork
   end
-  
+
   # Set the after_perform_jobs_per_fork proc.
   def self.after_perform_jobs_per_fork=(after_perform_jobs_per_fork)
     @after_perform_jobs_per_fork = after_perform_jobs_per_fork
   end
-  
+
   class Worker
-    
+
     def perform_with_jobs_per_fork(job)
       raise "You need to set JOBS_PER_FORK on the command line" unless ENV['JOBS_PER_FORK']
       run_hook :before_perform_jobs_per_fork, self
